@@ -30,15 +30,4 @@ The queries in this repository run against `uber_dataset.csv`, which contains th
 
 ---
 
-### SQL Queries & Business Insights
 
-#### 1. Option 1: Total Bonus Payout
-Calculates the total financial commitment if the flat \$50 bonus is implemented for drivers meeting all four criteria.
-
-```sql
-SELECT COUNT(*) * 50 AS total_payout_option_1
-FROM uber_dataset
-WHERE Trips_Completed >= 10 
-  AND Acceptance_percentage >= 90 
-  AND Supply_Hours >= 8 
-  AND Rating >= 4.7;
