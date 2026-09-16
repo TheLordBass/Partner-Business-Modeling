@@ -32,19 +32,19 @@ Operations needed to know the cost of each, and who each one leaves out.
 * **The Approach:** Counted drivers clearing all four conditions and multiplied by the $50 flat rate.
 * **Result:** **$1,050** — 21 qualifying drivers at $50 each.
 
-![Option 1 total payout](How%20much%20would%20the%20total%20bonus%20payout%20be%20with%20Option%201.png)
+![Option 1 total payout](option-1-payout.png)
 
 ### 2. What does Option 2 cost?
 * **The Approach:** Summed `trips_completed * 4` across drivers meeting the trip and rating thresholds — the payout scales with volume rather than headcount.
 * **Result:** **$2,696**, which is 674 qualifying trips at $4 each.
 
-![Option 2 total payout](--How%20much%20would%20the%20total%20bonus%20payout%20be%20with%20Option%202%3F.png)
+![Option 2 total payout](option-2-payout.png)
 
 ### 3. Who wins under Option 1 but loses under Option 2?
 * **The Approach:** Isolated drivers completing 10 or 11 trips who met the acceptance, hours and rating bars — the group that clears the quality bar but not the volume bar.
 * **Result:** **2 drivers**.
 
-![Drivers qualifying under Option 1 but not Option 2](How%20many%20drivers%20would%20qualify%20for%20a%20bonus%20under%20Option%201%20but%20not%20under%20Option%202%3F.png)
+![Drivers qualifying under Option 1 but not Option 2](option-1-not-option-2.png)
 
 * **Why it matters:** This was the main fairness objection to Option 2 — drivers doing everything asked of them on quality, then missing out on volume. At 2 drivers it is not a material concern, and it should not drive the decision.
 
@@ -52,7 +52,7 @@ Operations needed to know the cost of each, and who each one leaves out.
 * **The Approach:** Calculated the share of drivers completing fewer than 10 trips *and* accepting under 90% of requests while still holding a 4.7+ rating, using explicit `CAST` to `FLOAT` so integer division didn't silently zero the result.
 * **Result:** **10.92%** of drivers online.
 
-![Share of high-rated, low-engagement drivers](What%20percentages%20of%20drivers%20online%20completed%20less%20than%2010%20trips%2C%20had%20an%20acceptance%20rate%20of%20less%20than%2090%25%2C%20and%20had%20a%20rating%20of%204.7%20or%20higher%3F.png)
+![Share of high-rated, low-engagement drivers](low-engagement-share.png)
 
 * **Why it matters:** Roughly one driver in nine is well-rated but barely working. Neither scheme reaches them — Option 1 requires 8 hours and 90% acceptance, Option 2 requires 12 trips, and this group clears none of those. They are the largest pool of latent supply on the platform and the most obvious gap in both designs.
 
@@ -100,7 +100,7 @@ Queries run against `uber_dataset`:
 ---
 
 ## ▶️ Reproducing
-1. Unzip `datasets (4).zip` and load the driver data into your SQL environment as a table named `uber_dataset`.
+1. Unzip `uber_dataset.zip` and load the driver data into your SQL environment as a table named `uber_dataset`.
 2. Run `Uber Partner Business Modeling.sql` top to bottom — each query is preceded by the question it answers.
 
 The four PNGs in the repository are the result sets for those queries, in the same order.
